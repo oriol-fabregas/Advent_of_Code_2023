@@ -1,0 +1,49 @@
+from re import I
+#PART 2
+file = open("input2.txt")
+data = file.readlines()
+
+red_cubes=12
+green_cubes=13
+blue_cubes=14
+
+#Game 1: 4 blue, 16 green, 2 red; 5 red, 11 blue, 16 green; 9 green, 11 blue; 10 blue, 6 green, 4 red
+#Game | 1: | 4 | blue, | 16 | green, | 2 | red; | 5 | red, | ....
+
+#separate per spaces:
+data1=[]
+for i in data:
+  data1.append(i.split(" "))
+
+sum=0
+list=[]
+
+for game in data1:
+  number=True
+  print("\n")
+  print("Game: ", game[1])
+  print(game)
+  min_red_num=0
+  min_green_num=0
+  min_blue_num=0
+
+  for i in range(2,len(game)):
+    if number==True:
+      num=int(game[i])
+      print("num: ", num, " ", game[i+1])
+      number=False
+      continue
+    if number==False:
+      if (game[i]=="red" or game[i]=="red,"or game[i]=="red;" or game[i]=="red\n") and num>min_red_num: min_red_num=num
+      if (game[i]=="green" or game[i]=="green,"or game[i]=="green;" or game[i]=="green\n") and num>min_green_num: min_green_num=num
+      if (game[i]=="blue" or game[i]=="blue,"or game[i]=="blue;" or game[i]=="blue\n") and num>min_blue_num: min_blue_num=num
+      number=True
+
+    if i==len(game)-1:
+      print("Max numbers: ", min_red_num, "red, ", min_green_num, "green, ", min_blue_num, "blue")
+      list.append(min_red_num*min_green_num*min_blue_num)
+
+for i in list:
+  sum+
+
+print(sum)
